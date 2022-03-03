@@ -92,5 +92,43 @@ namespace BinarySearchTree
             Console.WriteLine($"size of BST: {leftCount + rightCount}");
         }
 
+
+
+        public void Search(T input)
+        {
+            int leftCount = 0;
+            int rightCount = 0;
+            BST<T> temp = newNode;
+
+            while (temp.left != null && temp.right != null)
+            {
+                if (temp.left != null)
+                {
+                    if (temp.left.data.Equals(input))
+                    {
+                        Console.WriteLine($"search result: {input}");
+                        break;
+                    }
+                        leftCount++;
+                }
+                if (temp.right != null)
+                {
+                    if (temp.right.data.Equals(input))
+                    {
+                        Console.WriteLine($"search result: {input}");
+                        break;
+                    }
+                    rightCount++;
+                }
+                if (leftCount < rightCount)
+                {
+                    temp = temp.left;
+                }
+                if (leftCount >= rightCount)
+                {
+                    temp = temp.right;
+                }
+            }
+        }
     }
 }
